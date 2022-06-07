@@ -1,6 +1,23 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import { AiFillEdit } from "react-icons/ai";
+import { FaTrashAlt } from "react-icons/fa";
 const Table = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function fetchApi() {
+      try {
+        const products = await fetch("http://localhost:5000/products");
+        const result = await products.json();
+        setProducts(result);
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+
+    fetchApi();
+  }, []);
+
   return (
     <div className="container table-responsive pb-5">
       <table className="table table-hover">
@@ -14,23 +31,23 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colSpan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {products.map((product) => (
+            <tr>
+              <th scope="row">{product?.productName}</th>
+              <td>{product?.unitPrice}</td>
+              <td>{product?.qty}</td>
+              <td>{product?.totalPrice}</td>
+
+              <td>
+                <button className="btn btn-danger">
+                  <FaTrashAlt />
+                </button>
+                <button className="btn btn-success">
+                  <AiFillEdit />
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
