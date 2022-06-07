@@ -31,7 +31,7 @@ const CreateProduct = () => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Your work has been saved",
+          title: "Your product has been added!",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -91,7 +91,6 @@ const CreateProduct = () => {
                 </label>
                 <input
                   type="text"
-                  ref={productNameRef}
                   className="form-control"
                   id="productName"
                   placeholder="Product Name"
@@ -172,7 +171,7 @@ const CreateProduct = () => {
             {errors.exampleRequired && <span>This field is required</span>} */}
 
             <div className="row">
-              <div className="col-md-4 my-3 ">
+              <div className="col-md-4 mt-3 mb-5 ">
                 <button type="submit" className="btn btn-primary fw-bold w-100">
                   Save
                 </button>
@@ -181,32 +180,34 @@ const CreateProduct = () => {
           </form>
         </div>
 
-        <div className="py-5">
-          <form onSubmit={handleAddProduct}>
-            <input
-              type="text"
-              ref={productNameRef}
-              placeholder="Product Name"
-            />
-            <input
-              type="text"
-              ref={productPriceRef}
-              placeholder="Product price"
-            />
-            <input type="submit" value="submit" />
-          </form>
-        </div>
+        {/* <section>
+          <div className="py-5">
+            <form onSubmit={handleAddProduct}>
+              <input
+                type="text"
+                ref={productNameRef}
+                placeholder="Product Name"
+              />
+              <input
+                type="text"
+                ref={productPriceRef}
+                placeholder="Product price"
+              />
+              <input type="submit" value="submit" />
+            </form>
+          </div>
 
-        <div className="py-2">
-          <h2>Total users: {products.length}</h2>
-          <ul>
-            {products.map((product) => (
-              <li key={product?.id}>
-                {product?.productName} {product?.totalPrice}
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div className="py-2">
+            <h2>Total users: {products.length}</h2>
+            <ul>
+              {products.map((product) => (
+                <li key={product?.id}>
+                  {product?.productName} {product?.totalPrice}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section> */}
       </div>
     </div>
   );
