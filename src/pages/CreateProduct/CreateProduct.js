@@ -24,17 +24,26 @@ const CreateProduct = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log("data", data);
         const addedProduct = data;
         const newProducts = [...products, addedProduct];
         setProducts(newProducts);
 
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Your product has been added!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        if (addedProduct.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your product has been added!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+          });
+        }
       });
   };
 
@@ -172,7 +181,10 @@ const CreateProduct = () => {
 
             <div className="row">
               <div className="col-md-4 mt-3 mb-5 ">
-                <button type="submit" className="btn btn-primary fw-bold w-100">
+                <button
+                  type="submit"
+                  className="btn btn-primary rounded-pill fw-bold w-100"
+                >
                   Save
                 </button>
               </div>

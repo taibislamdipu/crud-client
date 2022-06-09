@@ -4,6 +4,7 @@ import { FaTrashAlt } from "react-icons/fa";
 const Table = () => {
   const [products, setProducts] = useState([]);
 
+  // fetch data from API
   useEffect(() => {
     async function fetchApi() {
       try {
