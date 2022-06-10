@@ -4,7 +4,7 @@ import { AiOutlineUnorderedList } from "react-icons/ai";
 import { MdOutlineCreateNewFolder } from "react-icons/md";
 const Navbar = () => {
   return (
-    <div className="container-fluid shadow">
+    <div className="container-fluid shadow sticky-top bg-white">
       <nav className="navbar navbar-expand-lg navbar-light ">
         <div className="container">
           <Link to="/" className="navbar-brand fw-bold text-primary">
